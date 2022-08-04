@@ -1,0 +1,22 @@
+Installation Utilitaires
+Installer AlgoboxURL
+Installer JavaURL
+Installer MysqlURL
+Installer Apache2 (connectez-vous depuis l'hôte si VM, une autre machine si Dual boot))URL
+Installer Php 7URL
+Installer Phpmyadmin, et connectez-vous depuis l'hôteURL
+Installer EclipseURL
+Installer Composer 2URL
+
+SSH
+Configurer SSH (désactiver le compte root)URL
+Vérifiez que vous arrivez à vous y connecter avec Putty (clé publique)URL
+Configurer la connexion SSH par clé publique/privéeURL
+
+Sécurisation Linux
+Installer fail2ban (testez-le bien sûr...)URL
+Déploiement sous Linux
+Installer Wordpress, une VM par service, séparer disques systèmes et donnéesURL
+Mettez en place une sauvegarde de la base de données avec mysqldumpURL
+Mettez en place une sauvegarde des données de wordpress avec rsyncURL
+Automatisez les sauvegardes avec cronURL
