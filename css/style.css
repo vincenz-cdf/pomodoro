@@ -16,24 +16,24 @@ body {
     margin-top: 50px;
 }
 
+.h1 {
+    font-size: 50px;
+}
+
 .pw {
     font-size: 96px;
 }
 
 .activate {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
     text-decoration: none;
-    padding: 20px 50px;
-    font-size: 1.25rem;
-    border: 3px solid #000;
-    color: #000;
-    text-shadow: none;
-    background: white;
-    content: "";
-    width: calc(100%-6px);
-    height: calc(100%-6px);
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    transition: transform 0.3s ease;
+    display: inline-block;
+    font-size: 16px;
     cursor: pointer;
+    width: 125px;
+    margin-right: 10px;
 }
