@@ -36,6 +36,10 @@ body {
     margin-right: 25px;
 }
 
+.pw-input {
+    margin-right: 25px;
+}
+
 input {
     background-color: #11ffee00;
     text-align: center;
