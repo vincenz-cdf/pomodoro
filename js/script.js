@@ -1,6 +1,7 @@
 //Boutons
 const activateEl = document.getElementById("activate");
 const pauseEl = document.getElementById("pause");
+const divButtonEl = document.getElementById("pw-button");
 
 //Minuteur
 const timerEl = document.getElementById("timer");
@@ -21,21 +22,18 @@ function incrementCounter() {
 //Inputs
 const workValueEl = document.getElementById("workValue");
 const breakValueEl = document.getElementById("breakValue"); 
+const divInputEl = document.getElementById("pw-input")
 
 //Hide buttons
 function hideHUD() {
-  activateEl.style.visibility='hidden';
-  pauseEl.style.visibility='hidden';
-  workValueEl.style.visibility='hidden';
-  breakValueEl.style.visibility='hidden';
+  divButtonEl.style.visibility='hidden';
+  divInputEl.style.visibility='hidden';
 }
 
 //Show buttons
 function showHUD() {
-  activateEl.style.visibility='visible';
-  pauseEl.style.visibility='visible';
-  workValueEl.style.visibility='visible';
-  breakValueEl.style.visibility='visible';
+  divButtonEl.style.visibility='visible';
+  divInputEl.style.visibility='visible'
 }
 
 activateEl.addEventListener("click", function(){
