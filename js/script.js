@@ -18,10 +18,30 @@ function incrementCounter() {
   countEl.innerHTML = "Session : " + counter;
 }
 
-activateEl.addEventListener("click", function(){
-  var timerWork = new Date(new Date().getTime() + 25*60000).getTime();
+//Inputs
+const workValueEl = document.getElementById("workValue");
+const breakValueEl = document.getElementById("breakValue"); 
+
+//Hide buttons
+function hideHUD() {
   activateEl.style.visibility='hidden';
   pauseEl.style.visibility='hidden';
+  workValueEl.style.visibility='hidden';
+  breakValueEl.style.visibility='hidden';
+}
+
+//Show buttons
+function showHUD() {
+  activateEl.style.visibility='visible';
+  pauseEl.style.visibility='visible';
+  workValueEl.style.visibility='visible';
+  breakValueEl.style.visibility='visible';
+}
+
+activateEl.addEventListener("click", function(){
+  var workValue = workValueEl.value;
+  var timerWork = new Date(new Date().getTime() + workValue*60000).getTime();
+  hideHUD();
 
   var x = setInterval(function() {
 
@@ -37,17 +57,16 @@ activateEl.addEventListener("click", function(){
       clearInterval(x);
       alarmSound.play();
       timerEl.innerHTML = "Time's up!";
-      activateEl.style.visibility='visible';
-      pauseEl.style.visibility='visible';
+      showHUD();
       incrementCounter();
     }
   }, 1000);
 });
 
 pauseEl.addEventListener("click", function() {
-  var timerBreak = new Date(new Date().getTime() + 5*60000).getTime();
-  activateEl.style.visibility='hidden';
-  pauseEl.style.visibility='hidden';
+  var breakValue = breakValueEl.value;
+  var timerBreak = new Date(new Date().getTime() + breakValue*60000).getTime();
+  hideHUD();
 
   var y = setInterval(function() {
 
@@ -63,8 +82,7 @@ pauseEl.addEventListener("click", function() {
       clearInterval(y);
       alarmSound.play();
       timerEl.innerHTML = "Time's up!";
-      activateEl.style.visibility='visible';
-      pauseEl.style.visibility='visible';
+      showHUD();
     }
   }, 1000);
 })
