@@ -5,6 +5,7 @@ const divButtonEl = document.getElementById("pw-button");
 
 //Minuteur
 const timerEl = document.getElementById("timer");
+const estimedtimeEl = document.getElementById("estimedtime");
 
 //Fichier Mp3
 const alarmSound = document.getElementById("alarm");
@@ -36,10 +37,28 @@ function showHUD() {
   divInputEl.style.visibility='visible'
 }
 
+//Convert to a timezone
+function convertTZ(date, tzString) {
+  return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));   
+}
+
+//Get estimed finish time
+function produceEstimateTime(minutes) {
+  var today = convertTZ(new Date(),'Europe/Paris');
+  var dayestimation = new Date(today.getTime() + minutes*60000).getTime();
+  var timestimation = new Date(dayestimation);
+  var h = timestimation.getHours(); 
+  var m = timestimation.getMinutes();
+  var s = timestimation.getSeconds();
+
+  estimedtimeEl.innerHTML = "Fin estimé : " + h + "h " + m + "m " + s + "s";
+}
+
 activateEl.addEventListener("click", function(){
   var workValue = workValueEl.value;
   var timerWork = new Date(new Date().getTime() + workValue*60000).getTime();
   hideHUD();
+  produceEstimateTime(workValue);
 
   var x = setInterval(function() {
 
@@ -50,11 +69,11 @@ activateEl.addEventListener("click", function(){
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    if(workValue < 60)
-      timerEl.innerHTML = minutes + "m " + seconds + "s";
+    if(workValue < 61)
+      timerEl.innerHTML = minutes + "m " + seconds + "s"; 
     else
       timerEl.innerHTML = hours + "h " + minutes + "m " + seconds + "s";
-
+  
     if (distance < 0) {
       clearInterval(x);
       alarmSound.play();
@@ -69,6 +88,7 @@ pauseEl.addEventListener("click", function() {
   var breakValue = breakValueEl.value;
   var timerBreak = new Date(new Date().getTime() + breakValue*60000).getTime();
   hideHUD();
+  produceEstimateTime(breakValue);
 
   var y = setInterval(function() {
 
@@ -79,11 +99,11 @@ pauseEl.addEventListener("click", function() {
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    if(breakValue < 60)
+    if(breakValue < 61)
       timerEl.innerHTML = minutes + "m " + seconds + "s";
     else
       timerEl.innerHTML = hours + "h " + minutes + "m " + seconds + "s";
-    
+
     if (distance < 0) {
       clearInterval(y);
       alarmSound.play();
