@@ -54,6 +54,12 @@ function produceEstimateTime(minutes) {
   estimedtimeEl.innerHTML = "Fin estimé : " + h + "h " + m + "m " + s + "s";
 }
 
+//timeUp
+function timeUp() {
+  timerEl.innerHTML = "Time's up!";
+  estimedtimeEl.innerHTML = "";
+}
+
 activateEl.addEventListener("click", function(){
   var workValue = workValueEl.value;
   var timerWork = new Date(new Date().getTime() + workValue*60000).getTime();
@@ -77,7 +83,7 @@ activateEl.addEventListener("click", function(){
     if (distance < 0) {
       clearInterval(x);
       alarmSound.play();
-      timerEl.innerHTML = "Time's up!";
+      timeUp()
       showHUD();
       incrementCounter();
     }
@@ -107,7 +113,7 @@ pauseEl.addEventListener("click", function() {
     if (distance < 0) {
       clearInterval(y);
       alarmSound.play();
-      timerEl.innerHTML = "Time's up!";
+      timeUp()
       showHUD();
     }
   }, 1000);
