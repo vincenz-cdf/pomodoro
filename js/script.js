@@ -6,6 +6,7 @@ const divButtonEl = document.getElementById("pw-button");
 //Minuteur
 const timerEl = document.getElementById("timer");
 const estimedtimeEl = document.getElementById("estimedtime");
+const depassementEl = document.getElementById("depassement");
 
 //Fichier Mp3
 const alarmSound = document.getElementById("alarm");
@@ -54,28 +55,61 @@ function produceEstimateTime(minutes) {
   estimedtimeEl.innerHTML = "Fin estimé : " + h + "h " + m + "m " + s + "s";
 }
 
-//timeUp
-function timeUp() {
-  timerEl.innerHTML = "Time's up!";
-  estimedtimeEl.innerHTML = "";
+function nullfyTimer() {
+  timerEl.innerHTML="";
+  estimedtimeEl.innerHTML="";
 }
 
-activateEl.addEventListener("click", function(){
+//temps écoulé!
+function timeUp() {
+  var s = 0;
+  nullfyTimer()
+  depassementEl.style.visibility='visible';
+  var z = setInterval(function() {
+    s=++s;
+    depassementEl.innerHTML = "dépassement : " + s + "s";
+  },1000)
+  activateEl.addEventListener("click", function(){
+    clearInterval(z);
+    depassementEl.style.visibility='hidden';
+  });
+  pauseEl.addEventListener("click", function(){
+    clearInterval(z);
+    depassementEl.style.visibility='hidden';
+  });
+}
+
+activateEl.addEventListener("click", function clickBOSSER(){
   var workValue = workValueEl.value;
-  var timerWork = new Date(new Date().getTime() + workValue*60000).getTime();
+  const status = 1;
   hideHUD();
   produceEstimateTime(workValue);
+  timeEngine(workValue, status);
+});
 
+pauseEl.addEventListener("click", function clickPAUSE() {
+  var breakValue = breakValueEl.value;
+  const status = 0;
+  hideHUD();
+  produceEstimateTime(breakValue);
+  timeEngine(breakValue, status);
+});
+
+function timeEngine(input,inputstatus) {
+
+  var value = input;
+  var status = inputstatus;
+  var timeToday = new Date(new Date().getTime() + value*60000).getTime();
   var x = setInterval(function() {
 
     var now = new Date().getTime();
 
-    var distance = timerWork - now;
+    var distance = timeToday - now;
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    if(workValue < 61)
+    if(value < 61)
       timerEl.innerHTML = minutes + "m " + seconds + "s"; 
     else
       timerEl.innerHTML = hours + "h " + minutes + "m " + seconds + "s";
@@ -85,37 +119,8 @@ activateEl.addEventListener("click", function(){
       alarmSound.play();
       timeUp()
       showHUD();
-      incrementCounter();
+      if (status == 1)
+        incrementCounter();
     }
   }, 1000);
-});
-
-pauseEl.addEventListener("click", function() {
-  var breakValue = breakValueEl.value;
-  var timerBreak = new Date(new Date().getTime() + breakValue*60000).getTime();
-  hideHUD();
-  produceEstimateTime(breakValue);
-
-  var y = setInterval(function() {
-
-    var now = new Date().getTime();
-
-    var distance = timerBreak - now;
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    if(breakValue < 61)
-      timerEl.innerHTML = minutes + "m " + seconds + "s";
-    else
-      timerEl.innerHTML = hours + "h " + minutes + "m " + seconds + "s";
-
-    if (distance < 0) {
-      clearInterval(y);
-      alarmSound.play();
-      timeUp()
-      showHUD();
-    }
-  }, 1000);
-})
-
+}
