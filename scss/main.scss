@@ -28,19 +28,23 @@ h1 {
     }
 }
 
+#pw-button {
+    margin-left: 20px;
+}
+
 .btn {
     color: white;
     font-size: 16px;
-    margin-right: 25px;
     &-activate {
-        background-color: #4CAF50;
         border: none;
-        padding: 15px 32px;
+        padding: 15px 5px;
         text-align: center;
         text-decoration: none;
-        cursor: pointer;
         width: 125px;
         margin-right: 25px;
+        background: #15DEA5;
+        cursor: pointer;
+        border-radius: 100rem;
     }
     &-noname {
         background-color: #000;
