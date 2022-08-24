@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/script.js" defer></script>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/main.css" />
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon"/>
     <audio id="alarm" src="./assets/alarm.mp3" preload="auto"></audio>
     <title>Pomodoro App</title>
@@ -17,16 +17,14 @@
     <div class="pw">
         <p id="timer"></p>
         <p id="depassement"></p>
-    </div>
-    <div>
         <p id="estimedtime"></p>
     </div>
     <div id="pw-button">
-        <button id="activate" class="activate">BOSSER!</button>
-        <button id="pause" class="activate">PAUSE!</button>
-        <button class="noname">Made by Vincent Vann</button>
+        <button id="activate" class="btn btn-activate">BOSSER!</button>
+        <button id="pause" class="btn btn-activate">PAUSE!</button>
+        <button class="btn btn-noname">Made by Vincent Vann</button>
     </div>
-    <div class="pw-input" id="pw-input">
+    <div id="pw-input">
         <textarea id="workValue" type="number" size="2" maxlength="3" max="3">25</textarea>m
         <textarea id="breakValue" type="number" size="2" maxlength="3" max="3">5</textarea>m
     </div>

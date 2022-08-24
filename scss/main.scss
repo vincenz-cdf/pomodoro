@@ -15,35 +15,41 @@ body {
     margin-top: 50px;
 }
 
-.h1 {
+h1 {
     font-size: 50px;
 }
 
 .pw {
     font-size: 96px;
     margin-bottom: -50px;
+    #depassement, #estimedtime{
+        font-size:  36px;
+        margin-bottom: 50px;
+    }
 }
 
-#depassement{
-    font-size:  36px;
-    margin-bottom: 50px;
-}
-
-.activate {
-    background-color: #4CAF50; /* Green */
-    border: none;
+.btn {
     color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
     font-size: 16px;
-    cursor: pointer;
-    width: 125px;
     margin-right: 25px;
-}
-
-.pw-input {
-    margin-right: 25px;
+    &-activate {
+        background-color: #4CAF50;
+        border: none;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        width: 125px;
+        margin-right: 25px;
+    }
+    &-noname {
+        background-color: #000;
+        border: 3px solid #000;
+        border-radius: 5px;
+        position: fixed;
+        bottom: 0;
+        right: 100px;
+    }
 }
 
 textarea {
@@ -57,19 +63,7 @@ textarea {
     color: white;
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     font-family: "Poppins", sans-serif;
-    font-size: 32px;
-}
-
-.noname {
-    background-color: #000;
-    border: 3px solid #000;
-    border-radius: 5px;
-    position: fixed;
-    bottom: 0;
-    right: 100px;
-    color: white;
-    text-shadow: none;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 /************ Responsive ************/
@@ -85,6 +79,6 @@ textarea {
         color: white;
         text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
         font-family: "Poppins", sans-serif;
-        font-size: 32px;
+        font-size: 30px;
     }
 }
