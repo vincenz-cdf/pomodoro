@@ -1,36 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
 
+@mixin font-style($size, $marginb: null) {
+    font-size: $size;
+    margin-bottom: $marginb;
+}
+    
 * {
     box-sizing: border-box;
 }
 
+$pureblack: #000;
+
 body {
     color: white;
-    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     font-family: "Poppins", sans-serif;
     margin: 0;
-    background: url('../assets/bg2.jpg') center/cover;
+    background: url('../assets/bg2.jpg') no-repeat fixed left/cover;
     height: 100vh;
     text-align: center;
-    margin-top: 50px;
+    text-shadow: 1px 0 0 $pureblack, 0 -1px 0 $pureblack, 0 1px 0 $pureblack, -1px 0 0 $pureblack;
 }
 
 h1 {
-    font-size: 50px;
+    @include font-style(50px);
 }
 
 .pw {
-    font-size: 96px;
-    margin-bottom: -50px;
+    @include font-style(96px, -50px);
     #depassement, #estimedtime{
-        font-size:  36px;
-        margin-bottom: 50px;
+        @include font-style(36px, 50px);
     }
 }
 
 #pw-button {
-    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-left: 25px;
 }
+
+$mint: #15DEA5;
 
 .btn {
     color: white;
@@ -42,13 +49,13 @@ h1 {
         text-decoration: none;
         width: 125px;
         margin-right: 25px;
-        background: #15DEA5;
+        background: $mint;
         cursor: pointer;
         border-radius: 100rem;
     }
     &-noname {
-        background-color: #000;
-        border: 3px solid #000;
+        background-color: $pureblack;
+        border: 3px solid $pureblack;
         border-radius: 5px;
         position: fixed;
         bottom: 0;
@@ -56,33 +63,27 @@ h1 {
     }
 }
 
-textarea {
-    background-color: #11ffee00;
+$transparent: #11ffee00;
+@mixin text-area-format($widthsize) {
+    background-color: $transparent;
     text-align: center;
-    width: 5%;
+    width: $widthsize;
     height: 50px;  
     overflow: hidden;
     border: none;
     resize: none;
     color: white;
-    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
-    font-family: "Poppins", sans-serif;
+    text-shadow: 1px 0 0 $pureblack, 0 -1px 0 $pureblack, 0 1px 0 $pureblack, -1px 0 0 $pureblack;
     font-size: 30px;
+}
+
+textarea {
+    @include text-area-format(5%)
 }
 
 /************ Responsive ************/
 @media screen and (max-width: 900px) {
     textarea {
-        background-color: #11ffee00;
-        text-align: center;
-        width: 50px;
-        height: 50px;  
-        overflow: hidden;
-        border: none;
-        resize: none;
-        color: white;
-        text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
-        font-family: "Poppins", sans-serif;
-        font-size: 30px;
+        @include text-area-format(50px)
     }
 }

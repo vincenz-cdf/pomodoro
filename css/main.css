@@ -5,13 +5,12 @@
 
 body {
   color: white;
-  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
   font-family: "Poppins", sans-serif;
   margin: 0;
-  background: url("../assets/bg2.jpg") center/cover;
+  background: url("../assets/bg2.jpg") no-repeat fixed left/cover;
   height: 100vh;
   text-align: center;
-  margin-top: 50px;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 
 h1 {
@@ -28,7 +27,8 @@ h1 {
 }
 
 #pw-button {
-  margin-left: 20px;
+  margin-bottom: 10px;
+  margin-left: 25px;
 }
 
 .btn {
@@ -65,7 +65,6 @@ textarea {
   resize: none;
   color: white;
   text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
-  font-family: "Poppins", sans-serif;
   font-size: 30px;
 }
 
@@ -81,7 +80,6 @@ textarea {
     resize: none;
     color: white;
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
-    font-family: "Poppins", sans-serif;
     font-size: 30px;
   }
 }
