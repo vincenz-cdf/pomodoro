@@ -78,12 +78,10 @@ $transparent: #11ffee00;
 }
 
 textarea {
-    @include text-area-format(5%)
-}
-
-/************ Responsive ************/
-@media screen and (max-width: 900px) {
-    textarea {
+    @include text-area-format(5%);
+    /************ Responsive ************/
+    @media (max-width: 900px) {
         @include text-area-format(50px)
     }
 }
+
